@@ -23,4 +23,13 @@ class CategoryController extends Controller
 
         return redirect('/categories')->with('message', 'カテゴリーが作成されました');
     }
+
+    public function update(CategoryRequest $request)
+    {
+        $category = $request->only('name');
+
+        Category::find($request->id)->update($category);
+
+        return redirect('/categories')->with('message', 'カテゴリーが更新されました');
+    }
 }
