@@ -37,6 +37,6 @@ class CategoryController extends Controller
     {
         Category::find($request->id)->delete();
 
-        return redirect('/categories')->with('message', 'カテゴリーが削除さfれました');
+        return redirect('categories')->with('message', 'カテゴリーが削除されました');
     }
 }
