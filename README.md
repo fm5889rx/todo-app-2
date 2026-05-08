@@ -1,6 +1,6 @@
 # Todoアプリ（中級）
 
-## 開発環境構築
+## Ⅰ.開発環境構築
 
 旧教材の通りに`git clone`で構築すると、M4 Macでは環境構築に失敗するので、<br>
 `Docker compose`を使わずに`Larsavel Sail`で開発することとした。
@@ -82,27 +82,21 @@ sail artisan key:generate
 ```
 
 ### 動作確認
-
 - Laravelの動作確認
 ブラウザで`http://localhost`にアクセスし、Laravelのウェルカム画面が表示されることを確認。
-
 - phpMyAdninの動作確認
 ブラウザで`http://localhost:8080`にアクセスし、phpMyAdminnが表示されていることを確認。<br>
 ⚠️旧教材ではMySQLのバージョンが古くて、M4 Macではうまく構築されず、phpMyAdminが接続エラーになるため。
 
-
-
 ### 提供ファイルのインポート
-今回、フロントエンドプログラムもblade/CSSを作成するので、以降は旧教材に従って各機能を実装。<br>
+今回、フロントエンドプログラムのblade/CSSを作成するので、以降は旧教材に従って各機能を実装。<br>
 <br>
 
 
-
-## 教材からの変更点
+## Ⅱ.教材からの変更点
 
 ### 1. TodoContoller
 `TodoController`内で使用する`Update`メソッドで、`TodoRequest`モデルを使用するとモデルで定義してある`category_id`がバリデーションに引っ掛かるため、ただの`Request`モデルに変更した。<br>
-
 【変更前】
 ```php
     public function update(TodoRequest $request)
@@ -124,7 +118,6 @@ sail artisan key:generate
 ### 5.ルーティング
 `TodoController`のTodo_id渡しをURL埋め込みから`index.blade.php`内の`hidden`属性を持ったテキストボックス渡しに変更。<br>
 これにより、ルーティングの記述を一部変更。<br>
-
 【変更前】
 ```php
 Route::patch('/todos/{todo}', [TodoController::class, 'update']);
@@ -157,6 +150,7 @@ Route::delete('/todos/delete', [TodoController::class, 'destroy']);
 
 2. Todo検索用`form`に`action`属性と`method`属性を追加。<br>
 本来必要がないはずだが、ルートを明確にするためにあえて追加。<br>
+
 【変更前】
 ```php
     <form class="search-form">
@@ -169,8 +163,8 @@ Route::delete('/todos/delete', [TodoController::class, 'destroy']);
 ### 7.category.blade.php
 変更なし。
 
-### 8.`layout/app.blade.php`
-アプリのタイトル名を「Todo」から「Todoアプリ」に変更。
+### 8.layout/app.blade.php
+アプリのタイトル名を「Todo」から「Todoアプリ」に変更。<br>
 【変更前】
 ```php
     <title>Todo</title>
@@ -182,7 +176,7 @@ Route::delete('/todos/delete', [TodoController::class, 'destroy']);
 
 ### 9.CSSファイル群
 いずれも変更なし。
-- index.css
-- category.css
-- common.css
-- sanitize.css
+- `index.css`
+- `category.css`
+- `common.css`
+- `sanitize.css`
