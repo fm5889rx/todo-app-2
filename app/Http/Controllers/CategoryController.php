@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request)
     {
-        $category = $request->only('name');
+        $category = $request->only(['name']);
 
         Category::find($request->id)->update($category);
 
